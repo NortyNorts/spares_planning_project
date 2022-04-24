@@ -3,11 +3,10 @@ from db.run_sql import run_sql
 from repositories import customer_repository, part_repository, unit_repository
 from models.customer import Customer
 from models.unit import Unit
-from models.part import Part
 
 def save(customer):
-    sql = "INSERT INTO customer (name, unit_id) VALUES (%s,%s) RETURNING id"
-    values = [customer.name, customer.units.id]
+    sql = "INSERT INTO customers (name, unit_id) VALUES (%s,%s) RETURNING id"
+    values = [customer.name, customer.unit.id]
     results = run_sql(sql, values)
     id = results [0]['id']
     customer.id = id
@@ -17,7 +16,7 @@ def select_all():
     sql = "SELECT * FROM customers"
     results = run_sql(sql)
     for result in results:
-        unit = unit_repository.select(result[unit])
+        unit = unit_repository.select(result["unit_id"])
         customer =  Customer(result["name"], result["units"], result["id"])
         customers.append(customer)
     return customers
@@ -39,5 +38,6 @@ def delete(id):
     run_sql(sql, values)
 
 def update(customer):
-    sql = "UPDATE customer SET (name, unit_id) = (%s, %s) WHERE id = %s"
-    values = []
+    sql = "UPDATE customers SET (name, unit_id) = (%s, %s) WHERE id = %s"
+    values = [customer.name, customer.unit.id]
+    run_sql(sql, values)
