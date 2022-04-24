@@ -1,4 +1,8 @@
 from flask import Blueprint, Flask, redirect, render_template, request
-from controllers.zombies_controller import zombies
-from models.biting import Biting
-from repositories import biting_repository, zombie_repository, human_repository
+from controllers.parts_controller import part
+from repositories import customer_repository, part_repository, unit_repository
+from models.part import Part
+from models.customer import Customer
+from models.unit import Unit
+
+customers_blueprint = Blueprint("customers", __name__)

@@ -1,16 +1,14 @@
 from flask import Flask, render_template
 
-from controllers.customers_controller import humans_blueprint
-from controllers.zombies_controller import zombies_blueprint
-from controllers.zombie_types_controller import zombie_types_blueprint
-from controllers.bitings_controller import bitings_blueprint
+from controllers.customers_controller import customers_blueprint
+from controllers.parts_controller import parts_blueprint
+from controllers.units_controller import units_blueprint
 
 app = Flask(__name__)
 
-app.register_blueprint(humans_blueprint)
-app.register_blueprint(zombies_blueprint)
-app.register_blueprint(zombie_types_blueprint)
-app.register_blueprint(bitings_blueprint)
+app.register_blueprint(customers_blueprint)
+app.register_blueprint(parts_blueprint)
+app.register_blueprint(units_blueprint)
 
 @app.route("/")
 def main():
