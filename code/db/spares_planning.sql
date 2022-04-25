@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS units;
 
 CREATE TABLE units (
     id SERIAL PRIMARY KEY,
-    type VARCHAR (255),
+    unit_type VARCHAR (255),
     serial_number VARCHAR (255),
     hours_run INT
 );

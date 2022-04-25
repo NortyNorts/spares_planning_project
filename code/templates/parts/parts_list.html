@@ -3,11 +3,27 @@
 
 <h2>All Parts</h2>
 
-{% for part in parts %}
+
 
 <section>
-    <p>{{ part.name }}</p>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Number</th>
+          <th>Number Per Unit</th>
+          <th>Expected Hours</th>
+        </tr>
+      
+        {% for part in parts %}
+        <tr>
+            <td>{{part.name}}</td>
+            <td>{{part.number}}</td>
+            <td>{{part.number_per_unit}}</td>
+            <td>{{part.hour_exp}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </section>
 
-{% endfor %}
+
 {% endblock %}

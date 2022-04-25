@@ -18,7 +18,7 @@ def select_all():
     results = run_sql(sql)
     for result in results:
         unit = unit_repository.select(result["unit_id"])
-        part =  Part(result["name"], result["number"], result["number_per_unit"], result["hour_exp"], result["id"], unit)
+        part =  Part(result["name"], result["number"], result["number_per_unit"], result["hour_exp"], unit, result["id"])
         parts.append(part)
     return parts
 

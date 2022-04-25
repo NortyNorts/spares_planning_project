@@ -1,19 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<ul>
-    <li><a href="/cusomers/customer_list">CUSTOMERS</a>
-</ul>
-<ul>
-    <li><a href="/units/units_list">UNITS</a></li>
-</ul>
-
-<ul>
-    <li><a href="/parts/parts_list">ALL PARTS</a></li>
-</ul>
-
-<ul>
-    <li><a href="/customer/add_customer">ADD CUSTOMER</a></li>
-</ul>
+<section>
+    <a href="/customers">CUSTOMERS</a>
+    <a href="/units">UNITS</a>
+    <a href="/parts">ALL PARTS</a>
+    <a href="/customers/new_customer">ADD CUSTOMER</a>
+</section>
 
 {% endblock %}

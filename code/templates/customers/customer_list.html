@@ -6,8 +6,13 @@
 {% for customer in customers %}
 
 <section>
-    <p>{{ customer.name }}</p>
+    <a href="/customers/{{ customer.id }}/customer">{{ customer.name }}</a>
 </section>
 
 {% endfor %}
+
+<section>
+    <a href="/customers/new_customer">ADD CUSTOMER</a>
+</section>
+
 {% endblock %}

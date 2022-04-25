@@ -15,9 +15,11 @@ def select_all():
     customers = []
     sql = "SELECT * FROM customers"
     results = run_sql(sql)
+    print(results)
     for result in results:
+        print(result["unit_id"])
         unit = unit_repository.select(result["unit_id"])
-        customer =  Customer(result["name"], result["units"], result["id"])
+        customer =  Customer(result["name"], unit, result["id"])
         customers.append(customer)
     return customers
 
@@ -25,7 +27,8 @@ def select(id):
     sql = "SELECT * FROM customers WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    customer = Customer(result["name"], result["units"], result["id"])
+    unit = unit_repository.select(result["unit_id"])
+    customer = Customer(result["name"], unit, result["id"])
     return customer
 
 def delete_all():

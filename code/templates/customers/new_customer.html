@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Customers</h2>
+<h2>Add New Customer</h2>
 
-{% for customer in customers %}
+<form action="/customers" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for="unit">Unit to Add:</label>
+        <select name="unit_id" id="unit">
+            {% for unit in units %}
+            <option value="{{ unit.id }}">{{ unit.unit_type }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
 
-<section>
-    <p>{{ customer.name }}</p>
-</section>
-
-{% endfor %}
 {% endblock %}

@@ -6,8 +6,11 @@
 {% for unit in units %}
 
 <section>
-    <p>{{ unit.type }}</p>
+    <a href = "/units/{{ unit.id }}/unit_detail">{{ unit.unit_type }} {{unit.serial_number}}</a>
 </section>
 
 {% endfor %}
+
+<a href="/units/new_unit">ADD UNIT</a>
+
 {% endblock %}

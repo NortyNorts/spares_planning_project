@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Customers</h2>
-
-{% for customer in customers %}
+<h2>{{customer.name}}</h2>
 
 <section>
-    <p>{{ customer.name }}</p>
+    <a href = "/units/{{ customer.unit.id }}/unit_detail">{{ customer.unit.unit_type }} {{customer.unit.serial_number}}</a>
 </section>
 
-{% endfor %}
+<form action="/customers/{{ customer.id }}/delete" method="POST">
+    <input type="submit" value="Delete">
+
+<a href="/customers/new_customer">ADD CUSTOMER</a>
+
 {% endblock %}

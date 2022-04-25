@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ unit.unit_type }} {{unit.serial_number}}</h2>
+
+
+
+<section>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Number</th>
+          <th>Number Per Unit</th>
+          <th>Expected Hours</th>
+        </tr>
+      
+        {% for part in parts %}
+        <tr>
+            <td>{{part.name}}</td>
+            <td>{{part.number}}</td>
+            <td>{{part.number_per_unit}}</td>
+            <td>{{part.hour_exp}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<section>
+    <form action="/units/{{ unit.id }}/delete" method="POST">
+        <input type="submit" value="Delete Unit">
+</section>
+
+{% endblock %}

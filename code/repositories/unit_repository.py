@@ -6,8 +6,8 @@ from models.unit import Unit
 from models.part import Part
 
 def save(unit):
-    sql = "INSERT INTO units (type, serial_number, hours_run) VALUES (%s,%s,%s) RETURNING id"
-    values = [unit.type, unit.serial_number, unit.hours_run]
+    sql = "INSERT INTO units (unit_type, serial_number, hours_run) VALUES (%s,%s,%s) RETURNING id"
+    values = [unit.unit_type, unit.serial_number, unit.hours_run]
     results = run_sql(sql, values)
     id = results [0]['id']
     unit.id = id
@@ -17,15 +17,15 @@ def select_all():
     sql = "SELECT * FROM units"
     results = run_sql(sql)
     for result in results:
-        unit = Unit(result["type"], result["serial_number"], result["id"])
+        unit = Unit(result["unit_type"], result["serial_number"], result["hours_run"], result["id"])
         units.append(unit)
     return units
 
 def select(id):
     sql = "SELECT * FROM units WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)
-    unit = Unit(result["type"], result["serial_number"], result["id"])
+    result = run_sql(sql, values)[0]
+    unit = Unit(result["unit_type"], result["serial_number"], result["hours_run"], result["id"])
     return unit
 
 def delete_all():
@@ -41,6 +41,3 @@ def update(unit):
     sql = "UPDATE units SET (type, serial_number, hours_run) = (%s, %s, %s) WHERE id = %s"
     values = [unit.type, unit.serial_number, unit.hours_run, unit.id]
     run_sql(sql, values)
-
-def parts_list(unit):
-    sql = "SELECT parts.* FROM parts INNER JOIN units ON "
