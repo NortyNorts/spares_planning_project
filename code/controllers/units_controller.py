@@ -2,6 +2,7 @@ from flask import Blueprint, Flask, redirect, render_template, request
 
 import repositories.unit_repository as unit_repository
 import repositories.part_repository as part_repository
+import repositories.customer_repository as customer_repository
 
 from models.part import Part
 from models.customer import Customer
@@ -25,7 +26,8 @@ def unit_details(id):
 # New
 @units_blueprint.route("/units/new_unit")
 def new_customer():
-    return render_template("units/new_unit.html")
+    customers = customer_repository.select_all()
+    return render_template("units/new_unit.html", customers = customers)
 
 # Create
 @units_blueprint.route("/units", methods = ["POST"])
@@ -33,7 +35,9 @@ def add_new_customer():
     unit_type = request.form["unit_type"]
     unit_sn = request.form["serial_number"]
     unit_hr = request.form["unit_hours_run"]
-    new_unit = Unit(unit_type, unit_sn, unit_hr)
+    customer_id = request.form["customer_id"]
+    customer = customer_repository.select(customer_id)
+    new_unit = Unit(unit_type, unit_sn, unit_hr, customer)
     unit_repository.save(new_unit)
     return redirect("/units")
 
@@ -46,8 +50,9 @@ def delete_unit(id):
 # EDIT
 @units_blueprint.route("/units/<id>/edit")
 def edit_unit(id):
+    customers = customer_repository.select_all()
     unit = unit_repository.select(id)
-    return render_template("units/edit_unit.html", unit=unit)
+    return render_template("units/edit_unit.html", unit=unit, customers = customers)
 
 # UPDATE
 @units_blueprint.route("/units/<id>", methods = ["POST"])
@@ -55,6 +60,8 @@ def update_unit(id):
     unit_type = request.form["unit_type"]
     unit_sn = request.form["serial_number"]
     unit_hr = request.form["hours_run"]
-    unit = Unit(unit_type, unit_sn, unit_hr, id)
+    customer_id = request.form["customer_id"]
+    customer = customer_repository.select(customer_id)
+    unit = Unit(unit_type, unit_sn, unit_hr, customer, id)
     unit_repository.update(unit)
     return redirect("/units")

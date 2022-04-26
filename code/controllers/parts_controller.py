@@ -15,6 +15,12 @@ def parts():
     parts = part_repository.select_all()
     return render_template("parts/parts_list.html", parts=parts)
 
+# Show
+@parts_blueprint.route("/parts/<id>/part")
+def view_part(id):
+    part = part_repository.select(id)
+    return render_template("parts/part.html", part=part)
+
 # New
 @parts_blueprint.route("/parts/new_part")
 def new_customer():
@@ -34,24 +40,28 @@ def add_new_part():
     part_repository.save(new_part)
     return redirect("/parts")
 
-# # DELETE
-# @units_blueprint.route("/units/<id>/delete", methods = ["POST"])
-# def delete_unit(id):
-#     unit_repository.delete(id)
-#     return redirect("/units")
+# DELETE
+@parts_blueprint.route("/parts/<id>/delete", methods = ["POST"])
+def delete_part(id):
+    part_repository.delete(id)
+    return redirect("/parts")
 
-# # EDIT
-# @units_blueprint.route("/units/<id>/edit")
-# def edit_unit(id):
-#     unit = unit_repository.select(id)
-#     return render_template("units/edit_unit.html", unit=unit)
+# EDIT
+@parts_blueprint.route("/parts/<id>/edit")
+def edit_part(id):
+    units = unit_repository.select_all()
+    part = part_repository.select(id)
+    return render_template("parts/edit_part.html", part=part, units = units)
 
-# # UPDATE
-# @units_blueprint.route("/units/<id>", methods = ["POST"])
-# def update_unit(id):
-#     unit_type = request.form["unit_type"]
-#     unit_sn = request.form["serial_number"]
-#     unit_hr = request.form["hours_run"]
-#     unit = Unit(unit_type, unit_sn, unit_hr, id)
-#     unit_repository.update(unit)
-#     return redirect("/units")
+# UPDATE
+@parts_blueprint.route("/parts/<id>", methods = ["POST"])
+def update_part(id):
+    name = request.form["name"]
+    number = request.form["number"]
+    num_per_unit = request.form["num_per_unit"]
+    hours_exp = request.form["hours_exp"]
+    unit_id = request.form["unit_id"]
+    unit = unit_repository.select(unit_id)
+    part = Part(name, number, num_per_unit, hours_exp , unit, id)
+    part_repository.update(part)
+    return redirect("/parts")

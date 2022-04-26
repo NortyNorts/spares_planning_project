@@ -13,7 +13,10 @@ part_repository.delete_all()
 unit_repository.delete_all()
 customer_repository.delete_all()
 
-rs_5 = Unit("RS 5kg", "C123", 0)
+customer1 = Customer("CodeClan")
+customer_repository.save(customer1)
+
+rs_5 = Unit("RS 5kg", "C123", 0, customer1)
 unit_repository.save(rs_5)
 
 part1 = Part("Snap_ring", "DF1115497",1,2500, rs_5)
@@ -60,8 +63,5 @@ part_repository.save(part14)
 
 part15 = Part("Hose set for inlet and drain", "2579885", 1, 20000, rs_5)
 part_repository.save(part15)
-
-customer1 = Customer("CodeClan", rs_5)
-customer_repository.save(customer1)
 
 

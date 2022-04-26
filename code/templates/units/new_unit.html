@@ -16,7 +16,15 @@
         <label for="unit_hours_run">Unit Running Hours:</label>
         <input type="number" id="unit_hours_run" name="unit_hours_run">
     </div>
-
+    <div>
+        <label for="customer">Assign to Customer:</label>
+        <select name="customer_id" id="customer">
+            {% for customer in customers %}
+            <option value="{{ customer.id }}">{{ customer.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
     <div>
         <input type="submit">
     </div>

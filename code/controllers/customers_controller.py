@@ -24,16 +24,13 @@ def view_customer(id):
 # New
 @customers_blueprint.route("/customers/new_customer")
 def new_customer():
-    units = unit_repository.select_all()
-    return render_template("customers/new_customer.html", units = units)
+    return render_template("customers/new_customer.html")
 
 # Create
 @customers_blueprint.route("/customers", methods = ["POST"])
 def add_new_customer():
     name = request.form["name"]
-    unit_id = request.form["unit_id"]
-    unit = unit_repository.select(unit_id)
-    new_customer = Customer(name, unit)
+    new_customer = Customer(name)
     customer_repository.save(new_customer)
     return redirect("/customers")
 
@@ -47,15 +44,12 @@ def delete_customer(id):
 @customers_blueprint.route("/customers/<id>/edit")
 def edit_customer(id):
     customer = customer_repository.select(id)
-    units = unit_repository.select_all()
-    return render_template("customers/edit_customer.html", customer = customer, units=units)
+    return render_template("customers/edit_customer.html", customer = customer)
 
 # UPDATE
 @customers_blueprint.route("/customers/<id>", methods = ["POST"])
 def update_customer(id):
     name = request.form["name"]
-    unit_id = request.form["unit_id"]
-    unit = unit_repository.select(unit_id)
-    customer = Customer(name, unit, id)
+    customer = Customer(name, id)
     customer_repository.update(customer)
     return redirect("/customers")

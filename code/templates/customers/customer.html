@@ -3,10 +3,6 @@
 
 <h2>{{customer.name}}</h2>
 
-<section>
-    <a href = "/units/{{ customer.unit.id }}/unit_detail">{{ customer.unit.unit_type }} {{customer.unit.serial_number}}</a>
-</section>
-
 <form action="/customers/{{ customer.id }}/delete" method="POST">
     <input type="submit" value="Delete">
 </form>

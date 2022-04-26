@@ -5,8 +5,8 @@ from models.customer import Customer
 from models.unit import Unit
 
 def save(customer):
-    sql = "INSERT INTO customers (name, unit_id) VALUES (%s,%s) RETURNING id"
-    values = [customer.name, customer.unit.id]
+    sql = "INSERT INTO customers (name) VALUES (%s) RETURNING id"
+    values = [customer.name]
     results = run_sql(sql, values)
     id = results [0]['id']
     customer.id = id
@@ -17,9 +17,7 @@ def select_all():
     results = run_sql(sql)
     print(results)
     for result in results:
-        print(result["unit_id"])
-        unit = unit_repository.select(result["unit_id"])
-        customer =  Customer(result["name"], unit, result["id"])
+        customer =  Customer(result["name"], result["id"])
         customers.append(customer)
     return customers
 
@@ -27,8 +25,7 @@ def select(id):
     sql = "SELECT * FROM customers WHERE id = %s"
     values = [id]
     result = run_sql(sql, values)[0]
-    unit = unit_repository.select(result["unit_id"])
-    customer = Customer(result["name"], unit, result["id"])
+    customer = Customer(result["name"], result["id"])
     return customer
 
 def delete_all():
@@ -41,6 +38,6 @@ def delete(id):
     run_sql(sql, values)
 
 def update(customer):
-    sql = "UPDATE customers SET (name, unit_id) = (%s, %s) WHERE id = %s"
-    values = [customer.name, customer.unit.id, customer.id]
+    sql = "UPDATE customers SET name = %s WHERE id = %s"
+    values = [customer.name, customer.id]
     run_sql(sql, values)

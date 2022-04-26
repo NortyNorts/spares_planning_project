@@ -1,31 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>All Parts</h2>
-
-<a href="/parts/new_part">Add Part</a>
+<h2>{{part.name}}</h2>
 
 <section>
     <table>
         <tr>
-          <th>Name</th>
           <th>Number</th>
           <th>Number Per Unit</th>
           <th>Expected Hours</th>
           <th>Assinged Unit</th>
         </tr>
       
-        {% for part in parts %}
         <tr>
-            <td><a href="/parts/{{ part.id }}/part">{{ part.name }}</a></td>
             <td>{{part.number}}</td>
             <td>{{part.number_per_unit}}</td>
             <td>{{part.hour_exp}}</td>
-            <td>{{part.unit.unit_type}} {{part.unit.serial_number}} </td>
+            <td>{{part.unit.unit_type}} {{part.unit.serial_number}} 
+            </td>
         </tr>
-        {% endfor %}
     </table>
-</section>
 
+<div>
+<a href = "/parts/{{part.id}}/edit">Edit Part</a>
+</div>
+
+<div>
+<form action="/parts/{{ part.id }}/delete" method="POST">
+    <input type="submit" value="Delete">
+</form>
+</div>
 
 {% endblock %}

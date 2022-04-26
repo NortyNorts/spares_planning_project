@@ -9,15 +9,6 @@
         <input type="text" id="name" name="name">
     </div>
     <div>
-        <label for="unit">Unit to Add:</label>
-        <select name="unit_id" id="unit">
-            {% for unit in units %}
-            <option value="{{ unit.id }}">{{ unit.unit_type }} {{unit.serial_number}}
-            </option>
-            {% endfor %}
-        </select>
-    </div>
-    <div>
         <input type="submit">
     </div>
 </form>
