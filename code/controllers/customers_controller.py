@@ -44,3 +44,20 @@ def add_new_customer():
 def delete_customer(id):
     customer_repository.delete(id)
     return redirect("/customers")
+
+# EDIT
+@customers_blueprint.route("/customers/<id>/edit")
+def edit_customer(id):
+    customer = customer_repository.select(id)
+    units = unit_repository.select_all()
+    return render_template("customers/edit_customer.html", customer = customer, units=units)
+
+# UPDATE
+@customers_blueprint.route("/customers/<id>", methods = ["POST"])
+def update_customer(id):
+    name = request.form["name"]
+    unit_id = request.form["unit_id"]
+    unit = unit_repository.select(unit_id)
+    customer = Customer(name, unit, id)
+    customer_repository.update(customer)
+    return redirect("/customers")

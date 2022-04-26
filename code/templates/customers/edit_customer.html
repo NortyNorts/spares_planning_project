@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Customer</h2>
+
+<form action="/customers/{{customer.id}}" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <label for = "unit">Select Unit</label>
+        <select name = "unit_id" id = "unit">
+            {%for unit in units%}
+            <option value ="{{ unit.id }}" {% if unit.id == customer.unit.id %} selected {% endif %}>{{unit.unit_type}} {{unit.serial_number}}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}
