@@ -53,8 +53,8 @@ def edit_unit(id):
 @units_blueprint.route("/units/<id>", methods = ["POST"])
 def update_unit(id):
     unit_type = request.form["unit_type"]
-    unit_hr = request.form["unit_hr"]
-    unit_sn = request.form["unit_sn"]
-    unit = Unit(unit_type, unit_hr, unit_sn, id)
+    unit_sn = request.form["serial_number"]
+    unit_hr = request.form["hours_run"]
+    unit = Unit(unit_type, unit_sn, unit_hr, id)
     unit_repository.update(unit)
     return redirect("/units")

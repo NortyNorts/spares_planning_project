@@ -6,15 +6,15 @@
 <form action="/units/{{unit.id}}" method="POST">
     <div>
         <label for="unit_type">Unit Type:</label>
-        <input type="text" id="unit_type" name="unit_type">
+        <input type="text" id="unit_type" name="unit_type" value="{{unit.unit_type}}">
     </div>
     <div>
-        <label for="unit_sn">Serial Number:</label>
-        <input type="text" id="unit_sn" name="unit_sn">
+        <label for="serial_number">Serial Number:</label>
+        <input type="text" id="serial_number" name="serial_number" value = {{unit.serial_number}}>
     </div>
     <div>
-        <label for="unit_hr">Hours Run:</label>
-        <input type="number" id="unit_hr" name="unit_hr">
+        <label for="hours_run">Hours Run:</label>
+        <input type="number" id="hours_run" name="hours_run" value= {{unit.hours_run}}>
     </div>
     <div>
         <input type="submit">
