@@ -12,6 +12,7 @@
           <th>Number</th>
           <th>Number Per Unit</th>
           <th>Expected Hours</th>
+          <th>Assinged Unit</th>
         </tr>
       
         {% for part in parts %}
@@ -20,6 +21,7 @@
             <td>{{part.number}}</td>
             <td>{{part.number_per_unit}}</td>
             <td>{{part.hour_exp}}</td>
+            <td>{{part.unit.unit_type}} {{part.unit.serial_number}} </td>
         </tr>
         {% endfor %}
     </table>

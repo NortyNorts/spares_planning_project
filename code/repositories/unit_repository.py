@@ -38,6 +38,6 @@ def delete(id):
     run_sql(sql, values)
 
 def update(unit):
-    sql = "UPDATE units SET (type, serial_number, hours_run) = (%s, %s, %s) WHERE id = %s"
-    values = [unit.type, unit.serial_number, unit.hours_run, unit.id]
+    sql = "UPDATE units SET (unit_type, serial_number, hours_run) = (%s, %s, %s) WHERE id = %s"
+    values = [unit.unit_type, unit.serial_number, unit.hours_run, unit.id]
     run_sql(sql, values)

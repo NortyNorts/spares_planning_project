@@ -19,7 +19,7 @@ def units():
 @units_blueprint.route("/units/<id>/unit_detail")
 def unit_details(id):
     unit = unit_repository.select(id)
-    parts = part_repository.select_all()
+    parts = part_repository.select_by_unit_id(id)
     return render_template("/units/unit_detail.html", unit=unit, parts = parts)
 
 # New
@@ -41,4 +41,20 @@ def add_new_customer():
 @units_blueprint.route("/units/<id>/delete", methods = ["POST"])
 def delete_unit(id):
     unit_repository.delete(id)
+    return redirect("/units")
+
+# EDIT
+@units_blueprint.route("/units/<id>/edit")
+def edit_unit(id):
+    unit = unit_repository.select(id)
+    return render_template("units/edit_unit.html", unit=unit)
+
+# UPDATE
+@units_blueprint.route("/units/<id>", methods = ["POST"])
+def update_unit(id):
+    unit_type = request.form["unit_type"]
+    unit_hr = request.form["unit_hr"]
+    unit_sn = request.form["unit_sn"]
+    unit = Unit(unit_type, unit_hr, unit_sn, id)
+    unit_repository.update(unit)
     return redirect("/units")

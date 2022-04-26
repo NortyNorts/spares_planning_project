@@ -30,6 +30,20 @@ def select(id):
     part =  Part(result["name"], result["number"], result["number_per_unit"], result["hour_exp"], unit, result["id"])
     return part
 
+def select_by_unit_id(id):
+    parts = []
+    sql = "SELECT * FROM parts WHERE unit_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if len(results) > 0:
+        for result in results:
+            unit = unit_repository.select(result["unit_id"])
+            part =  Part(result["name"], result["number"], result["number_per_unit"], result["hour_exp"], unit, result["id"])
+            parts.append(part)
+        return parts
+    else:
+        return []
+
 def delete_all():
     sql = "DELETE FROM parts"
     run_sql(sql)

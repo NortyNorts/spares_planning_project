@@ -25,8 +25,6 @@ def view_customer(id):
 @customers_blueprint.route("/customers/new_customer")
 def new_customer():
     units = unit_repository.select_all()
-    for var in units:
-        print(var.__dict__)
     return render_template("customers/new_customer.html", units = units)
 
 # Create
