@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>All Parts</h2>
-
-<a href="/parts/new_part">Add Part</a>
+<div class ="heading">
+    <p>All Parts</p>
+</div>
+<div class="edit">
+    <li>
+        <a href="/parts/new_part">Add Part</a>
+    </li>
+</div>
 
 <section>
-    <table>
+    <table class="styled-table">
         <tr>
-          <th>Name</th>
-          <th>Number</th>
+          <th>Part Name</th>
+          <th>Part Number</th>
           <th>Number Per Unit</th>
           <th>Expected Hours</th>
           <th>Assinged Unit</th>

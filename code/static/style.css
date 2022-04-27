@@ -1,0 +1,219 @@
+header{
+    background-color: DodgerBlue;
+    height: 230px;
+}
+
+.title{
+    display: flex;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    justify-content: left;
+    font-size: 70px;
+    font-weight:800;
+    margin-top: 0;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    padding-top: 30px;
+}
+
+
+.main-nav > ul {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    border-radius: 10px;
+    margin:0px;
+    padding: 0px;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.main-nav ul > li > a{
+    border-radius: 10px;
+    background: white;
+    margin:0px;
+    padding: 15px;
+    color: dodgerblue;
+    display: block;
+    text-decoration: none;
+}
+
+
+.main-links ul{
+    display: flex;
+    flex-direction:row;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    margin:0px;
+    margin-top: 30px;
+    margin-right: 20px;
+    padding: 0px;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold; 
+}
+
+.main-links ul> li >a{
+    border-radius: 10px;
+    background: dodgerblue;
+    margin:10px;
+    padding: 50px;
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+
+.add-customer > li{
+    display: flex;
+    border-radius: 10px;
+    margin:0px;
+    padding: 0px;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.add-customer > li> a{
+    border-radius: 10px;
+    margin:0px;
+    padding: 50px;
+    background: dodgerblue;
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+
+.heading > p{
+    margin:10px;
+    padding: 0px;
+    color: dodgerblue;
+    text-decoration: none;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.edit >li{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: left;
+    border-radius: 10px;
+    margin-top:10px;
+    margin-left: 3px;
+    padding: 0px;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    border: 0px;
+    text-align: center;
+}
+
+.edit >li> a{
+    border-radius: 10px;
+    background: lightseagreen;
+    padding: 10px;
+    color: white;
+    display: block;
+    text-decoration: none;
+    width: 275px;
+}
+
+.form{
+    width:200px;
+    padding:20px;
+}
+
+input[type=text],[type=number]{
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    border: 2px solid #eee;
+    margin:10px 0;
+    width: 400px;
+    font-size: 20px;
+}
+
+.delete input[type=submit]{
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    border: 2px solid #eee;
+    margin:10px 0;
+    width: 300px;
+    background-color: lightcoral;
+    font-size: 20px;
+}
+
+input[type=submit]{
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    border: 2px solid #eee;
+    margin:10px 0;
+    width: 425px;
+    background-color: lightgray;
+    font-size: 20px;
+}
+
+select {
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius:10px;
+    border: 2px solid #eee;
+    margin:10px 0;
+    width: 425px;
+    font-size: 20px;
+  }
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 20px;
+    font-family: sans-serif;
+    min-width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+table td:nth-child(3),table td:nth-child(4){
+    text-align: center;
+}
+
+.styled-table th{
+    background-color: dodgerblue;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 10px solid dodgerblue;
+}

@@ -1,22 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>{{ unit.unit_type }} {{unit.serial_number}}</h2>
+<div class ="heading">
+    <p>{{ unit.unit_type }} {{unit.serial_number}}</p>
+</div>
+<div class="edit">
+    <li>
+        <a href="/parts/new_part">Add Part</a>
+    </li>
+</div>
+
+<div class="edit">
+    <li>
+    <a href = "/units/{{unit.id}}/edit">Edit Unit</a>
+    </li>
+</div>
 
 <section>
-    <a href = "/units/{{unit.id}}/edit">EDIT UNIT</a>
-</section>
-
-<section>
+    <div class="delete">
     <form action="/units/{{ unit.id }}/delete" method="POST">
         <input type="submit" value="Delete Unit">
+    </div>
 </section>
 
 <section>
-    <table>
+    <table class="styled-table">
         <tr>
-          <th>Name</th>
-          <th>Number</th>
+          <th>Part Name</th>
+          <th>Part Number</th>
           <th>Number Per Unit</th>
           <th>Expected Hours</th>
         </tr>

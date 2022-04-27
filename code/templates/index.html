@@ -2,10 +2,16 @@
 {% block content %}
 
 <section>
-    <a href="/customers">CUSTOMERS</a>
-    <a href="/units">UNITS</a>
-    <a href="/parts">ALL PARTS</a>
-    <a href="/customers/new_customer">ADD CUSTOMER</a>
+    <div class="main-links">
+        <ul>
+            <li><a href="/customers">CUSTOMERS</a></li>
+            <li><a href="/units">UNITS</a></li>
+            <li><a href="/parts">ALL PARTS</a></li>
+        </ul>
+    </div>
+    <div class="add-customer">
+        <li><a href="/customers/new_customer">ADD CUSTOMER</a></li>
+    </div>
 </section>
 
 {% endblock %}

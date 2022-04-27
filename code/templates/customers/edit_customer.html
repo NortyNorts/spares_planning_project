@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Edit Customer</h2>
+<div class ="heading">
+    <p>Edit Customer</p>
+</div>
 
+<div class = "form">
 <form action="/customers/{{customer.id}}" method="POST">
     <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" placeholder="Name">
     </div>
     <div>
         <input type="submit">
     </div>
 </form>
+</div>
+
 
 {% endblock %}

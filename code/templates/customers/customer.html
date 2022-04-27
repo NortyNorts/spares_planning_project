@@ -1,23 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>{{customer.name}}</h2>
+<div class ="heading">
+    <p>{{customer.name}}</p>
+</div>
+<div class="edit">
+     <li>
+        <a href = "/customers/{{customer.id}}/edit">Edit Customer</a>
+    </li>
+ </div>
 
-{% for unit in units %}
-
-<section>
-    <a href = "/units/{{ unit.id }}/unit_detail">{{ unit.unit_type }} {{unit.serial_number}}</a>
-</section>
-
-{% endfor %}
-
-<form action="/customers/{{ customer.id }}/delete" method="POST">
-    <input type="submit" value="Delete">
+ <div class="delete">
+    <form action="/customers/{{ customer.id }}/delete" method="POST">
+    <input type="submit" value="Delete Customer">
+</div>
 </form>
 
-<a href = "/customers/{{customer.id}}/edit">EDIT CUSTOMER</a>
+<section>
+    <div class="main-links">
+        <ul>
+{% for unit in units %}
+            <li>
+                <a href = "/units/{{ unit.id }}/unit_detail">{{ unit.unit_type }} {{unit.serial_number}}</a>
+            </li>
+{% endfor %}
+        </ul>
+    </div>
+</section>
 
-
-<a href="/customers/new_customer">ADD CUSTOMER</a>
+<div class="add-customer">
+    <li><a href="/units/new_unit">ADD UNIT</a></li>
+</div>
 
 {% endblock %}

@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Units</h2>
-
-{% for unit in units %}
+<div class ="heading">
+    <p>All Units</p>
+</div>
 
 <section>
-    <a href = "/units/{{ unit.id }}/unit_detail">{{ unit.unit_type }} {{unit.serial_number}}</a>
+    <div class="main-links">
+        <ul>
+{% for unit in units %}
+    <li>
+        <a href = "/units/{{ unit.id }}/unit_detail">{{ unit.unit_type }} {{unit.serial_number}}</a>
+    </li>
+{% endfor %}
+        </ul>
+    </div>
 </section>
 
-{% endfor %}
-
-<a href="/units/new_unit">ADD UNIT</a>
+<div class="add-customer">
+    <li><a href="/units/new_unit">ADD UNIT</a></li>
+</div>
 
 {% endblock %}

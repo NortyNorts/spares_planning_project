@@ -16,7 +16,7 @@ customer_repository.delete_all()
 customer1 = Customer("CodeClan")
 customer_repository.save(customer1)
 
-customer2 = Customer("Edinburgh Caslte")
+customer2 = Customer("Edinburgh Castle")
 customer_repository.save(customer2)
 
 rs_5 = Unit("RS 5kg", "A123", 0, customer1)
@@ -28,7 +28,7 @@ unit_repository.save(rs_8)
 rs_10 = Unit("RS 10kg", "C123", 0, customer1)
 unit_repository.save(rs_10)
 
-part1 = Part("Snap_ring", "DF1115497",1,2500, rs_5)
+part1 = Part("Snap ring", "DF1115497",1,2500, rs_5)
 part_repository.save(part1)
 
 part2 = Part("Sealing set for tank", "RS2599191", 1, 2500, rs_5)
@@ -73,7 +73,7 @@ part_repository.save(part14)
 part15 = Part("Hose set for inlet and drain", "2579885", 1, 20000, rs_5)
 part_repository.save(part15)
 
-part16 = Part("Snap_ring", "DF1115497",1,2500, rs_8)
+part16 = Part("Snap ring", "DF1115497",1,2500, rs_8)
 part_repository.save(part16)
 
 part17 = Part("Sealing set for tank", "RS2599191", 1, 2500, rs_8)
@@ -118,7 +118,7 @@ part_repository.save(part29)
 part30 = Part("Hose set for inlet and drain", "2579885", 1, 20000, rs_8)
 part_repository.save(part30)
 
-part31 = Part("Snap_ring", "DF1115497",1,2500, rs_10)
+part31 = Part("Snap ring", "DF1115497",1,2500, rs_10)
 part_repository.save(part31)
 
 part32 = Part("Sealing set for tank", "RS2599191", 1, 2500, rs_10)

@@ -1,27 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Edit Part</h2>
+<div class ="heading">
+    <p>Edit Part</p>
+</div>
 
-<form action="/parts/{{part.id}}" method="POST">
+<form class = "form" action="/parts/{{part.id}}" method="POST">
     <div>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
+        <input type="text" id="name" name="name" placeholder="Name">
     </div>
     <div>
-        <label for="number">Part Number:</label>
-        <input type="text" id="number" name="number">
+        <input type="text" id="number" name="number" placeholder="Part number">
     </div>
     <div>
-        <label for="num_per_unit">Number per Unit:</label>
-        <input type="number" id="num_per_unit" name="num_per_unit">
+        <input type="number" id="num_per_unit" name="num_per_unit" placeholder="Number per Unit">
     </div>
     <div>
-        <label for="hours_exp">Hour Expiry:</label>
-        <input type="number" id="hours_exp" name="hours_exp">
+        <input type="number" id="hours_exp" name="hours_exp" placeholder="Max Hours">
     </div>
     <div>
-        <label for="unit">Assign to Unit:</label>
         <select name="unit_id" id="unit">
             {% for unit in units %}
             <option value="{{ unit.id }}">{{ unit.unit_type }} {{unit.serial_number}}
