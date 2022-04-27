@@ -41,5 +41,19 @@ def delete(id):
 
 def update(unit):
     sql = "UPDATE units SET (unit_type, serial_number, hours_run, customer_id) = (%s, %s, %s,%s) WHERE id = %s"
-    values = [unit.unit_type, unit.serial_number, unit.hours_run, unit.customer.id]
+    values = [unit.unit_type, unit.serial_number, unit.hours_run, unit.customer.id, unit.id]
     run_sql(sql, values)
+
+def select_by_unit(id):
+    units = []
+    sql = "SELECT * FROM units WHERE customer_id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if len(results) > 0:
+        for result in results:
+            customer = customer_repository.select(result["customer_id"])
+            unit =  Unit(result["unit_type"], result["serial_number"], result["hours_run"], customer, result["id"])
+            units.append(unit)
+        return units
+    else:
+        return []

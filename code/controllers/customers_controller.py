@@ -18,8 +18,9 @@ def customers():
 # Show
 @customers_blueprint.route("/customers/<id>/customer")
 def view_customer(id):
+    units = unit_repository.select_by_unit(id)
     customer = customer_repository.select(id)
-    return render_template("customers/customer.html", customer=customer)
+    return render_template("customers/customer.html", customer=customer, units = units)
 
 # New
 @customers_blueprint.route("/customers/new_customer")

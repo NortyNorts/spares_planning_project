@@ -3,6 +3,14 @@
 
 <h2>{{customer.name}}</h2>
 
+{% for unit in units %}
+
+<section>
+    <a href = "/units/{{ unit.id }}/unit_detail">{{ unit.unit_type }} {{unit.serial_number}}</a>
+</section>
+
+{% endfor %}
+
 <form action="/customers/{{ customer.id }}/delete" method="POST">
     <input type="submit" value="Delete">
 </form>
