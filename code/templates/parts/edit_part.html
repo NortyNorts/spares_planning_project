@@ -7,16 +7,16 @@
 
 <form class = "form" action="/parts/{{part.id}}" method="POST">
     <div>
-        <input type="text" id="name" name="name" placeholder="Name">
+        <input type="text" id="name" name="name" placeholder="{{part.name}}">
     </div>
     <div>
-        <input type="text" id="number" name="number" placeholder="Part number">
+        <input type="text" id="number" name="number" placeholder="{{part.number}}">
     </div>
     <div>
-        <input type="number" id="num_per_unit" name="num_per_unit" placeholder="Number per Unit">
+        <input type="number" id="num_per_unit" name="num_per_unit" placeholder="{{part.number_per_unit}}">
     </div>
     <div>
-        <input type="number" id="hours_exp" name="hours_exp" placeholder="Max Hours">
+        <input type="number" id="hours_exp" name="hours_exp" placeholder="{{part.hour_exp}}">
     </div>
     <div>
         <select name="unit_id" id="unit">
