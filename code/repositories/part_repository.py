@@ -54,7 +54,7 @@ def delete(id):
     run_sql(sql, values)
 
 def update(part):
-    sql = "UPDATE parts SET (name, number, number_per_unit, hour_exp, unit_id) = (%s,%s,%s,%s, %s) WHERE id = %s"
-    values = [part.name, part.number, part.number_per_unit, part.hour_exp, part.unit.id]
+    sql = "UPDATE parts SET (name, number, number_per_unit, hour_exp, unit_id) = (%s,%s,%s,%s,%s) WHERE id = %s"
+    values = [part.name, part.number, part.number_per_unit, part.hour_exp, part.unit.id, part.id]
     run_sql(sql, values)
 

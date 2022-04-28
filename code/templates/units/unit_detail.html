@@ -34,7 +34,7 @@
       
         {% for part in parts %}
         <tr>
-            <td>{{part.name}}</td>
+            <td><a href="/parts/{{ part.id }}/part">{{ part.name }}</a></td>
             <td>{{part.number}}</td>
             <td>{{part.number_per_unit}}</td>
             <td>{{part.hour_exp}}</td>

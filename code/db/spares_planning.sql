@@ -13,16 +13,16 @@ CREATE TABLE units (
     id SERIAL PRIMARY KEY,
     unit_type VARCHAR (255),
     serial_number VARCHAR (255),
-    hours_run INT,
-    customer_id INT REFERENCES customers(id) ON DELETE CASCADE
+    hours_run INT DEFAULT 1,
+    customer_id INT NOT NULL REFERENCES customers(id) ON DELETE CASCADE
 );
 
 CREATE TABLE parts (
     id SERIAL PRIMARY KEY,
     name VARCHAR (255),
     number VARCHAR (255),
-    number_per_unit INT,
-    hour_exp INT,
-    unit_id INT REFERENCES units(id) ON DELETE CASCADE
+    number_per_unit INT DEFAULT 1,
+    hour_exp INT DEFAULT 1,
+    unit_id INT NOT NULL REFERENCES units(id) ON DELETE CASCADE
 );
 
